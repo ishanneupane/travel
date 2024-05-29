@@ -1,16 +1,23 @@
 # visit_nepal
 
-A new Flutter project.
+# Flutter Application
 
-## Getting Started
+This Flutter application demonstrates best practices in Flutter development, featuring clean architecture, responsive design, and integrations with REST APIs, Cubit for state management, and Firebase for authentication.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **HTTP REST API Integration:** Connects to a RESTful API to fetch and display data.
+- **Cubit State Management:** Manages the state of the application using Cubit for predictable and scalable state management.
+- **Firebase Authentication:** Provides user authentication (login and registration) using Firebase.
+- **Responsive Design:** Ensures the application looks great on devices of all sizes.
+## Project Structure
+The project follows a feature-based folder structure for better scalability and maintainability.
+- lib/
+- ├── cubit/                # Contains Cubit classes for state management
+- ├── models/               # Data models
+- ├── repository/           # Repository classes for API calls
+- ├── screens/              # UI screens of the app
+- ├── services/             # Services such as API service and Firebase service
+- ├── widgets/              # Reusable UI components
+- └── main.dart             # Entry point of the application
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
