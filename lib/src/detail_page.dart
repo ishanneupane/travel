@@ -25,7 +25,7 @@ class _DetailPageState extends State<DetailPage> {
                 onTap: () {
                   BlocProvider.of<AppCubits>(context).goHome();
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.home,
                   size: 50,
                 ),

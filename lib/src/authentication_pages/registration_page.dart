@@ -25,6 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Text(""),
         actions: [
           InkWell(
             child: Icon(
@@ -39,7 +40,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         backgroundColor: Colors.blue.shade900,
         title: const Center(
           child: CustomText(
-            text: "   Registration",
+            text: "Registration",
             fontWeight: FontWeight.bold,
             fontSize: 25,
             color: Colors.white,
@@ -111,14 +112,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             context: context,
                             firstDate: DateTime(1950),
                             lastDate: DateTime.now());
-                        if (age != null)
+                        if (age != null) {
                           setState(() {
                             ageController.text =
                                 age.toIso8601String().substring(0, 10);
                           });
+                        }
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(

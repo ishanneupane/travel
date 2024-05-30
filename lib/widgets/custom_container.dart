@@ -7,9 +7,11 @@ class CustomContainer extends StatelessWidget {
   final double radius;
   final String? imageName;
   final Widget? child;
+  final Color? color;
 
   const CustomContainer({
     Key? key,
+    this.color,
     this.height = 300,
     this.width = 300,
     this.radius = 30,
@@ -26,6 +28,7 @@ class CustomContainer extends StatelessWidget {
       width: width,
       margin: EdgeInsets.all(margin),
       decoration: BoxDecoration(
+        color: color,
         image: imageName != null
             ? DecorationImage(
                 image: AssetImage(imageName!),

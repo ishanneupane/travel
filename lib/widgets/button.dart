@@ -6,9 +6,11 @@ class CustomButton extends StatelessWidget {
   final double fontSize;
   final VoidCallback onPressed;
   final Icon icon;
+  final double width;
 
   const CustomButton({
     super.key,
+    this.width = .5,
     this.icon = const Icon(
       Icons.arrow_forward_rounded,
       color: Colors.white,
@@ -22,7 +24,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * .5,
+      width: MediaQuery.of(context).size.width * width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
