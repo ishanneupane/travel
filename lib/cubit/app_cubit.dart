@@ -20,6 +20,14 @@ class AppCubits extends Cubit<CubitStates> {
     }
   }
 
+  loginPage() {
+    emit(LoginState());
+  }
+
+  registrationPage() {
+    emit(RegistrationState());
+  }
+
   detailPage(ModelPlaces data) {
     emit(DetailState(data));
   }

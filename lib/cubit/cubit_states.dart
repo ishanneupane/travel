@@ -9,6 +9,18 @@ class InitialState extends CubitStates {
   List<Object> get props => [];
 }
 
+class LoginState extends CubitStates {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
+
+class RegistrationState extends CubitStates {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
+
 class WelcomeState extends CubitStates {
   @override
   // TODO: implement props

@@ -68,7 +68,7 @@ class _StartingPageState extends State<StartingPage> {
                     text: "Go?",
                     fontSize: MediaQuery.of(_).size.height * .03,
                     onPressed: () {
-                      BlocProvider.of<AppCubits>(context).getData();
+                      BlocProvider.of<AppCubits>(context).loginPage();
                     })
               ],
             ),

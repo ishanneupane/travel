@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:visit_nepal/cubit/app_cubit.dart';
 import 'package:visit_nepal/cubit/cubit_states.dart';
+import 'package:visit_nepal/src/authentication_pages/login_page.dart';
+import 'package:visit_nepal/src/authentication_pages/registration_page.dart';
 import 'package:visit_nepal/src/detail_page.dart';
 import 'package:visit_nepal/src/navigation_pages/nav_page.dart';
 import 'package:visit_nepal/src/starting_page.dart';
@@ -26,6 +28,10 @@ class _CubitLogicsState extends State<CubitLogics> {
             return DetailPage();
           } else if (state is LoadingState) {
             return Center(child: CircularProgressIndicator());
+          } else if (state is LoginState) {
+            return LoginPage();
+          } else if (state is RegistrationState) {
+            return RegistrationPage();
           } else if (state is LoadedState) {
             return NavigationPage();
           } else {

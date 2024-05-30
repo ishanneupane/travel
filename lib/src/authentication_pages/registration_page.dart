@@ -1,21 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:visit_nepal/widgets/button.dart';
 import 'package:visit_nepal/widgets/custom_sizedBox.dart';
 import 'package:visit_nepal/widgets/custom_text.dart';
 import 'package:visit_nepal/widgets/toast.dart';
 
-class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({super.key});
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
 
   @override
-  State<RegistrationScreen> createState() => _RegistrationScreenState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
+class _RegistrationPageState extends State<RegistrationPage> {
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController nameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -58,25 +60,60 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 key: formKey,
                 child: Column(
                   children: [
-                    TextFormField(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      controller: nameController,
-                      validator: (value) {
-                        if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value!)) {
-                          return 'Name must contain only letters';
-                        }
-                        if (value.length < 2) {
-                          return 'Name must be at least 2 characters long';
-                        } else
-                          return null;
-                      },
-                      decoration: const InputDecoration(
-                          labelText: "Name",
-                          icon: Icon(Icons.person),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30))),
-                          hintText: "Ramesh"),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            controller: nameController,
+                            validator: (value) {
+                              if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value!)) {
+                                return 'Name must contain only letters';
+                              }
+                              if (value.length < 2) {
+                                return 'Name must be at least 2 characters long';
+                              } else
+                                return null;
+                            },
+                            decoration: const InputDecoration(
+                                labelText: "Name",
+                                icon: Icon(Icons.person),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30))),
+                                hintText: "Ramesh"),
+                          ),
+                          flex: 1,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: TextFormField(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            controller: surnameController,
+                            validator: (value) {
+                              if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value!)) {
+                                return 'SurName must contain only letters';
+                              }
+                              if (value.length < 2) {
+                                return 'SurName must be at least 2 characters long';
+                              } else
+                                return null;
+                            },
+                            decoration: const InputDecoration(
+                                labelText: "SurName",
+                                icon: Icon(Icons.person),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30))),
+                                hintText: "Yadav"),
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 20,

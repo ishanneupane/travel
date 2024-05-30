@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:visit_nepal/cubit/app_cubit.dart';
 import 'package:visit_nepal/src/authentication_pages/registration_page.dart';
 import 'package:visit_nepal/widgets/button.dart';
 import 'package:visit_nepal/widgets/custom_sizedBox.dart';
@@ -87,41 +89,36 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Center(
               child: CustomButton(
-                color: Colors.green,
-                width: .45,
-                text: "Log in",
-                onPressed: () async {
-                  if (formKey.currentState!.validate()) {
-                    try {
-                      await auth.signInWithEmailAndPassword(
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
-                      CustomToast().show(
-                        'Login successful',
-                        color: Colors.green,
-                      );
-                      Navigator.of(context).pop();
-                    } catch (error) {
-                      String errorMessage = error.toString();
-                      List<String> parts = errorMessage.split("]");
-                      String endPart = parts.length > 1 ? parts[1] : parts[0];
-                      CustomToast().show(endPart);
-                    }
-                  } else {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return const AlertDialog(
-                          title: CustomText(
-                            text: 'Invalid Email or Password',
-                          ),
+                  color: Colors.green,
+                  width: .45,
+                  text: "Log in",
+                  onPressed: () async {
+                    if (formKey.currentState!.validate()) {
+                      try {
+                        await auth.signInWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text,
                         );
-                      },
-                    );
-                  }
-                },
-              ),
+
+                        BlocProvider.of<AppCubits>(context).getData();
+                        CustomToast().show(
+                          'Login successful',
+                          color: Colors.green,
+                        );
+                      } catch (error) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return const AlertDialog(
+                              title: CustomText(
+                                text: 'Invalid Email or Password',
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    }
+                  }),
             ),
             Center(
               child: CustomButton(
@@ -132,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const RegistrationScreen(),
+                      builder: (context) => const RegistrationPage(),
                     ),
                   );
                 },
