@@ -5,11 +5,15 @@ import 'package:visit_nepal/model/data_model.dart';
 import 'package:visit_nepal/services/data_services.dart';
 
 class AppCubits extends Cubit<CubitStates> {
-  AppCubits({required this.data}) : super(InitialState()) {
-    emit(WelcomeState());
+  AppCubits({required this.data}) : super(SplashState()) {
+    emit(SplashState());
   }
   final ApiData data;
   late final places;
+  newUser() async {
+    emit(WelcomeState());
+  }
+
   getData() async {
     try {
       emit(LoadingState());
@@ -20,11 +24,11 @@ class AppCubits extends Cubit<CubitStates> {
     }
   }
 
-  loginPage() {
+  login() {
     emit(LoginState());
   }
 
-  registrationPage() {
+  register() {
     emit(RegistrationState());
   }
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:visit_nepal/cubit/app_cubit.dart';
 import 'package:visit_nepal/src/navigation_pages/home_page.dart';
-import 'package:visit_nepal/src/navigation_pages/profile_page.dart';
 import 'package:visit_nepal/src/navigation_pages/search_page.dart';
+import 'package:visit_nepal/widgets/custom_text.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -13,7 +15,6 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> {
   List pages = [
     const Homepage(),
-    const ProfilePage(),
     const SearchPage(),
   ];
   int selectedIndex = 0;
@@ -21,6 +22,27 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            InkWell(
+              onTap: () {
+                BlocProvider.of<AppCubits>(context).login();
+              },
+              child: const Row(
+                children: [
+                  Expanded(child: CustomText(text: "Log Out")),
+                  Icon(Icons.logout)
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
       body: pages[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0,
@@ -41,10 +63,6 @@ class _NavigationPageState extends State<NavigationPage> {
           BottomNavigationBarItem(
             label: "home",
             icon: Icon(Icons.holiday_village),
-          ),
-          BottomNavigationBarItem(
-            label: "profile",
-            icon: Icon(Icons.person),
           ),
           BottomNavigationBarItem(
             label: "search",

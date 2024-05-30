@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:visit_nepal/widgets/button.dart';
 import 'package:visit_nepal/widgets/custom_sizedBox.dart';
 import 'package:visit_nepal/widgets/custom_text.dart';
@@ -27,10 +26,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Text(""),
+        leading: const Text(""),
         actions: [
           InkWell(
-            child: Icon(
+            child: const Icon(
               CupertinoIcons.forward,
               color: Colors.white,
             ),
@@ -55,7 +54,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 colors: [Colors.grey.shade200, Colors.blue.shade400])),
         child: ListView(
           children: [
-            CustomSizedBox(),
+            const CustomSizedBox(),
             Form(
                 key: formKey,
                 child: Column(
@@ -63,6 +62,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     Row(
                       children: [
                         Expanded(
+                          flex: 1,
                           child: TextFormField(
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
@@ -73,8 +73,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               }
                               if (value.length < 2) {
                                 return 'Name must be at least 2 characters long';
-                              } else
+                              } else {
                                 return null;
+                              }
                             },
                             decoration: const InputDecoration(
                                 labelText: "Name",
@@ -84,9 +85,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         BorderRadius.all(Radius.circular(30))),
                                 hintText: "Ramesh"),
                           ),
-                          flex: 1,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Expanded(
@@ -101,8 +101,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               }
                               if (value.length < 2) {
                                 return 'SurName must be at least 2 characters long';
-                              } else
+                              } else {
                                 return null;
+                              }
                             },
                             decoration: const InputDecoration(
                                 labelText: "SurName",
@@ -115,16 +116,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
                       validator: (value) {
-                        if (!RegExp(r"^\w+[@]+[a-zA-Z]+[.]+[a-z]{2,}$")
+                        if (!RegExp(r"^\w+@+[a-zA-Z]+[.]+[a-z]{2,}$")
                             .hasMatch(value!)) {
                           return "Email address not valid";
-                        } else
+                        } else {
                           return null;
+                        }
                       },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       controller: emailController,
@@ -133,16 +135,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               borderRadius: BorderRadius.circular(30)),
                           labelText: "Email",
                           hintText: "123@gmail.com",
-                          icon: Icon(Icons.email)),
+                          icon: const Icon(Icons.email)),
                     ),
-                    CustomSizedBox(value: .02),
+                    const CustomSizedBox(value: .02),
                     TextFormField(
                       readOnly: true,
                       controller: ageController,
                       decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30)),
-                          icon: Icon(Icons.date_range),
+                          icon: const Icon(Icons.date_range),
                           labelText: "Date of birth"),
                       onTap: () async {
                         final DateTime? age = await showDatePicker(
@@ -166,7 +168,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30)),
-                            icon: Icon(Icons.lock),
+                            icon: const Icon(Icons.lock),
                             labelText: "Password"),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
@@ -176,7 +178,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             return null;
                           }
                         }),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     CustomButton(
@@ -197,7 +199,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             String endPart = parts[1];
                             CustomToast().show(endPart);
                           }
-                          ;
                         }
                       },
                     )

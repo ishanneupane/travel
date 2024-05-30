@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:visit_nepal/cubit/app_cubit.dart';
@@ -70,20 +69,10 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
             var info = state.places;
 
             return Padding(
-              padding: const EdgeInsets.only(top: 70.0, left: 9, right: 9),
+              padding: const EdgeInsets.only(top: 30.0, left: 9, right: 9),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.menu,
-                      size: 30,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
                   const CustomText(
                     text: "Discover",
                     fontWeight: FontWeight.bold,

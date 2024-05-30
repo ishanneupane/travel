@@ -30,7 +30,7 @@ class _DetailPageState extends State<DetailPage> {
                   size: 50,
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 500,
                 child: ListView(
                   children: [

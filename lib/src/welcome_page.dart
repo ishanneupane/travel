@@ -6,14 +6,14 @@ import 'package:visit_nepal/widgets/custom_container.dart';
 import 'package:visit_nepal/widgets/custom_sizedBox.dart';
 import 'package:visit_nepal/widgets/custom_text.dart';
 
-class StartingPage extends StatefulWidget {
-  const StartingPage({super.key});
+class WelcomePage extends StatefulWidget {
+  const WelcomePage({super.key});
 
   @override
-  State<StartingPage> createState() => _StartingPageState();
+  State<WelcomePage> createState() => _WelcomePageState();
 }
 
-class _StartingPageState extends State<StartingPage> {
+class _WelcomePageState extends State<WelcomePage> {
   List images = ["a.jpeg", "b.jpeg", "c.jpeg"];
   List<String> text = [
     "LET'S GO",
@@ -49,7 +49,7 @@ class _StartingPageState extends State<StartingPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomSizedBox(),
+                const CustomSizedBox(),
                 CustomText(
                   text: text[3 * index],
                   textAlign: TextAlign.start,
@@ -68,7 +68,7 @@ class _StartingPageState extends State<StartingPage> {
                     text: "Go?",
                     fontSize: MediaQuery.of(_).size.height * .03,
                     onPressed: () {
-                      BlocProvider.of<AppCubits>(context).loginPage();
+                      BlocProvider.of<AppCubits>(context).login();
                     })
               ],
             ),

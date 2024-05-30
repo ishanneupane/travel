@@ -5,7 +5,7 @@ import 'package:visit_nepal/cubit/cubit_states.dart';
 import 'package:visit_nepal/widgets/custom_text.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  const SearchPage({super.key});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -19,12 +19,6 @@ class _SearchPageState extends State<SearchPage> {
   void initState() {
     super.initState();
     searchController.addListener(_filterPlaces);
-  }
-
-  @override
-  void dispose() {
-    searchController.dispose();
-    super.dispose();
   }
 
   void _filterPlaces() {
@@ -50,52 +44,42 @@ class _SearchPageState extends State<SearchPage> {
       ),
       body: BlocBuilder<AppCubits, CubitStates>(
         builder: (context, state) {
-          if (state is LoadedState) {
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  TextField(
-                    controller: searchController,
-                    decoration: const InputDecoration(
-                      hintText: 'Search places...',
-                      prefixIcon: Icon(Icons.search),
-                    ),
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                TextField(
+                  controller: searchController,
+                  decoration: const InputDecoration(
+                    hintText: 'Search places...',
+                    prefixIcon: Icon(Icons.search),
                   ),
-                  const SizedBox(height: 20),
-                  Expanded(
-                    child: ListView.separated(
-                      itemCount: filteredInfo.length,
-                      separatorBuilder: (context, index) => const Divider(),
-                      itemBuilder: (context, index) {
-                        return Row(
-                          children: [
-                            CustomText(text: "$index"),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            CustomText(
-                              text: filteredInfo[index].name.length < 20
-                                  ? filteredInfo[index].name
-                                  : filteredInfo[index].name.substring(0, 18),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: ListView.separated(
+                    itemCount: filteredInfo.length,
+                    separatorBuilder: (context, index) => const Divider(),
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          CustomText(text: "$index"),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CustomText(
+                            text: filteredInfo[index].name.length < 20
+                                ? filteredInfo[index].name
+                                : filteredInfo[index].name.substring(0, 18),
+                          ),
+                        ],
+                      );
+                    },
                   ),
-                ],
-              ),
-            );
-          } else {
-            return const Center(
-              child: CustomText(
-                text: "Error Loading",
-                color: Colors.red,
-                fontSize: 18,
-              ),
-            );
-          }
+                ),
+              ],
+            ),
+          );
         },
       ),
     );

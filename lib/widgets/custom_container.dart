@@ -10,7 +10,7 @@ class CustomContainer extends StatelessWidget {
   final Color? color;
 
   const CustomContainer({
-    Key? key,
+    super.key,
     this.color,
     this.height = 300,
     this.width = 300,
@@ -18,7 +18,7 @@ class CustomContainer extends StatelessWidget {
     this.child,
     this.margin = 0,
     this.imageName,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

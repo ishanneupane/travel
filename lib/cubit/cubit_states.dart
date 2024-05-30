@@ -3,7 +3,13 @@ import 'package:visit_nepal/model/data_model.dart';
 
 abstract class CubitStates extends Equatable {}
 
-class InitialState extends CubitStates {
+class SplashState extends CubitStates {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
+
+class WelcomeState extends CubitStates {
   @override
   // TODO: implement props
   List<Object> get props => [];
@@ -19,12 +25,6 @@ class RegistrationState extends CubitStates {
   @override
   // TODO: implement props
   List<Object?> get props => [];
-}
-
-class WelcomeState extends CubitStates {
-  @override
-  // TODO: implement props
-  List<Object> get props => [];
 }
 
 class LoadingState extends CubitStates {

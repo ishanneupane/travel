@@ -1,10 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class CustomSizedBox extends StatelessWidget {
   final num value;
-  CustomSizedBox({
+  const CustomSizedBox({
     super.key,
     this.value = .05,
   });
